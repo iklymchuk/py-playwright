@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ui-automation-framework"
+version = "1.0.0"
+description = "Robust test automation framework with Python, pytest, and Playwright"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Ivan Klymchuk"}
+]
+dependencies = [
+    "pytest>=8.0.0",
+    "pytest-playwright>=0.5.0",
+    "pytest-xdist>=3.5.0",
+    "pytest-html>=4.1.1",
+    "allure-pytest>=2.13.5",
+    "playwright>=1.40.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.1",
+    "requests>=2.31.0",
+    "faker>=22.0.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.12.0",
+    "ruff>=0.1.9",
+    "mypy>=1.8.0",
+    "pre-commit>=3.6.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+    "--disable-warnings",
+]
+markers = [
+    "smoke: Smoke test suite",
+    "regression: Regression test suite",
+    "e2e: End-to-end test suite",
+    "chromium: Run on Chromium browser",
+    "firefox: Run on Firefox browser",
+    "webkit: Run on WebKit browser",
+    "mobile: Mobile browser test",
+    "slow: Tests that take longer to execute",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true

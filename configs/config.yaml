@@ -1,0 +1,66 @@
+# Configuration files for different environments
+dev:
+  base_url: "https://demo.playwright.dev/todomvc"
+  api_url: ""
+  timeout: 30000
+  retry_attempts: 2
+  
+staging:
+  base_url: "https://demo.playwright.dev/todomvc"
+  api_url: ""
+  timeout: 30000
+  retry_attempts: 2
+  
+prod:
+  base_url: "https://demo.playwright.dev/todomvc"
+  api_url: ""
+  timeout: 60000
+  retry_attempts: 3
+
+# Browser configurations
+browsers:
+  chromium:
+    args:
+      - "--disable-dev-shm-usage"
+      - "--no-sandbox"
+    viewport:
+      width: 1920
+      height: 1080
+  firefox:
+    args: []
+    viewport:
+      width: 1920
+      height: 1080
+  webkit:
+    args: []
+    viewport:
+      width: 1920
+      height: 1080
+
+# Mobile device emulation
+devices:
+  iPhone_13:
+    user_agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15"
+    viewport:
+      width: 390
+      height: 844
+    device_scale_factor: 3
+    is_mobile: true
+    has_touch: true
+  Pixel_5:
+    user_agent: "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36"
+    viewport:
+      width: 393
+      height: 851
+    device_scale_factor: 2.75
+    is_mobile: true
+    has_touch: true
+
+# Test execution settings
+execution:
+  screenshot_on_failure: true
+  video_on_failure: true
+  trace_on_failure: true
+  slow_mo: 0
+  default_timeout: 30000
+  navigation_timeout: 30000

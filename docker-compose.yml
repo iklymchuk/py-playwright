@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # Main test execution service
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./reports:/app/reports
+    environment:
+      - ENV=dev
+      - BROWSER=chromium
+      - HEADLESS=true
+      - PARALLEL_WORKERS=4
+      - CI=true
+    command: pytest --browser=chromium --headless=true --parallel=4 --report=allure
+
+  # Chromium tests
+  test-chromium:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./reports:/app/reports
+    environment:
+      - BROWSER=chromium
+      - HEADLESS=true
+    command: pytest --browser=chromium --headless=true -m "smoke"
+
+  # Firefox tests
+  test-firefox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./reports:/app/reports
+    environment:
+      - BROWSER=firefox
+      - HEADLESS=true
+    command: pytest --browser=firefox --headless=true -m "smoke"
+
+  # WebKit tests
+  test-webkit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./reports:/app/reports
+    environment:
+      - BROWSER=webkit
+      - HEADLESS=true
+    command: pytest --browser=webkit --headless=true -m "smoke"
+
+  # Mobile tests
+  test-mobile:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./reports:/app/reports
+    environment:
+      - DEVICE=iPhone_13
+    command: pytest --browser=chromium --device=iPhone_13 -m "mobile"
+
+  # Allure report service
+  allure-report:
+    image: frankescobar/allure-docker-service:latest
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./reports/allure-results:/app/allure-results
+      - ./reports/allure-report:/app/allure-report
+    environment:
+      - ALLURE_VERSION=2.24.0
