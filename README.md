@@ -1,7 +1,6 @@
 # UI Test Automation Framework
 ## Python + pytest + Playwright
 
-[![Test Automation](https://github.com/yourusername/ui-automation/actions/workflows/test-automation.yml/badge.svg)](https://github.com/yourusername/ui-automation/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Playwright](https://img.shields.io/badge/playwright-1.40+-green.svg)](https://playwright.dev/python/)
 
@@ -48,26 +47,26 @@ A robust, scalable, and maintainable test automation framework for **UI and mobi
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Test Execution Layer                      │
-│                    (pytest + CLI)                            │
+│                    Test Execution Layer                     │
+│                    (pytest + CLI)                           │
 └──────────────────┬──────────────────────────────────────────┘
                    │
 ┌──────────────────┴──────────────────────────────────────────┐
-│              Configuration Management                        │
+│              Configuration Management                       │
 │        (YAML configs, env vars, CLI options)                │
 └──────────────────┬──────────────────────────────────────────┘
                    │
 ┌──────────────────┴──────────────────────────────────────────┐
-│                    Fixtures Layer                            │
+│                    Fixtures Layer                           │
 │      (Browser, Context, Page, Auth, Data)                   │
 └──────────────────┬──────────────────────────────────────────┘
                    │
 ┌──────────────────┴──────────────────────────────────────────┐
-│                  Page Object Layer                           │
-│           (BasePage, LoginPage, etc.)                        │
+│                  Page Object Layer                          │
+│           (BasePage, LoginPage, etc.)                       │
 └──────────────────┬──────────────────────────────────────────┘
                    │
-┌──────────────────┴──────────────────────────────────────────┐
+┌──────────────────┴───────────────────────────────────────────┐
 │                 Playwright Engine                            │
 │            (Browser automation)                              │
 └──────────────────────────────────────────────────────────────┘
@@ -527,7 +526,7 @@ This project is licensed under the MIT License.
 
 For questions or issues:
 - Open an issue on GitHub
-- Contact the test automation team
+- Contact the owner
 - Check documentation in `/docs`
 
 ---
@@ -539,5 +538,4 @@ For questions or issues:
 - [Allure](https://docs.qameta.io/allure/) - Test reporting
 
 ---
-
-**Built with ❤️ by the Ivan Klymchuk**
+<h4 style="text-align:center;">Built with ❤️ by Ivan Klymchuk</h4>
